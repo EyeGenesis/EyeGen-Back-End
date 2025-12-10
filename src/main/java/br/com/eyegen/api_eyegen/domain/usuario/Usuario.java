@@ -20,7 +20,8 @@ public class Usuario {
     private Long id;
     private String nome;
     private String email;
-    private Instant data_nascimento;
+    @Column(name = "data_nascimento")
+    private LocalDate dataNascimento;
     private String senha;
     private String telefone;
 

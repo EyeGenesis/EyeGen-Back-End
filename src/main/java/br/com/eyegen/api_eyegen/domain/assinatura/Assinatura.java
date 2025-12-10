@@ -31,5 +31,5 @@ public class Assinatura {
     private LocalDate dataVencimento;
 
     @Enumerated(value = EnumType.STRING)
-    private Status status;
+    private StatusAssinatura status;
 }
