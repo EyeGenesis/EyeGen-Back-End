@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.Instant;
 import java.time.LocalDate;
 
 @Getter
@@ -19,9 +20,11 @@ public class Usuario {
     private Long id;
     private String nome;
     private String email;
-    private LocalDate data_nascimento;
+    private Instant data_nascimento;
     private String senha;
+    private String telefone;
 
     @Enumerated(value = EnumType.STRING)
+    @Column(name = "tipo_def_visual")
     private TipoDeficienciaVisual deficienciaVisual;
 }
