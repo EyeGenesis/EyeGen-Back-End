@@ -1,4 +1,4 @@
-package br.com.eyegen.api_eyegen.domain.pedido;
+package br.com.eyegen.api_eyegen.domain.pedido.enums;
 
 public enum StatusPedido {
     PENDENTE,

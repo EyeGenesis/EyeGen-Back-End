@@ -1,18 +1,18 @@
 package br.com.eyegen.api_eyegen.domain.usuario;
 
+import br.com.eyegen.api_eyegen.domain.usuario.enums.TipoDeficienciaVisual;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
 import java.time.LocalDate;
 
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(of = "id")
 @Table(name = "usuarios")
 @Entity(name = "Usuario")
 public class Usuario {

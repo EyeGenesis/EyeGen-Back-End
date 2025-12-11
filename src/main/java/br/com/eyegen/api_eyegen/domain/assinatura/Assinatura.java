@@ -1,17 +1,17 @@
 package br.com.eyegen.api_eyegen.domain.assinatura;
 
+import br.com.eyegen.api_eyegen.domain.assinatura.enums.Plano;
+import br.com.eyegen.api_eyegen.domain.assinatura.enums.StatusAssinatura;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(of = "id")
 @Entity(name = "Assinatura")
 @Table(name = "assinaturas")
 public class Assinatura {

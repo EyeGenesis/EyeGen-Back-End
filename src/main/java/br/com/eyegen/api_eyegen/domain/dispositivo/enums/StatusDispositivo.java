@@ -1,4 +1,4 @@
-package br.com.eyegen.api_eyegen.domain.dispositivo;
+package br.com.eyegen.api_eyegen.domain.dispositivo.enums;
 
 public enum StatusDispositivo {
     ATIVO,

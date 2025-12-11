@@ -1,7 +1,8 @@
 package br.com.eyegen.api_eyegen.domain.pedido;
 
+import br.com.eyegen.api_eyegen.domain.pedido.enums.MetodoPagamento;
+import br.com.eyegen.api_eyegen.domain.pedido.enums.StatusPedido;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 

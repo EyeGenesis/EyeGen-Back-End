@@ -1,5 +1,6 @@
 package br.com.eyegen.api_eyegen.domain.usuario;
 
+import br.com.eyegen.api_eyegen.domain.usuario.enums.TipoDeficienciaVisual;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

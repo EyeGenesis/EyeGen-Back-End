@@ -1,5 +1,6 @@
 package br.com.eyegen.api_eyegen.domain.dispositivo;
 
+import br.com.eyegen.api_eyegen.domain.dispositivo.enums.StatusDispositivo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

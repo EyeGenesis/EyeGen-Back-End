@@ -1,6 +1,8 @@
 package br.com.eyegen.api_eyegen.domain.assinatura;
 
 
+import br.com.eyegen.api_eyegen.domain.assinatura.enums.Plano;
+import br.com.eyegen.api_eyegen.domain.assinatura.enums.StatusAssinatura;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;

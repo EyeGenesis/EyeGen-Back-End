@@ -1,4 +1,4 @@
-package br.com.eyegen.api_eyegen.domain.usuario;
+package br.com.eyegen.api_eyegen.domain.usuario.enums;
 
 public enum TipoDeficienciaVisual {
     CEGUEIRA,

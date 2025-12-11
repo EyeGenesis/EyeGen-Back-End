@@ -1,7 +1,10 @@
 package br.com.eyegen.api_eyegen.domain.pedido;
 
+import br.com.eyegen.api_eyegen.domain.pedido.enums.MetodoPagamento;
+import br.com.eyegen.api_eyegen.domain.pedido.enums.StatusPedido;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +14,7 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(of = "id")
 @Table(name = "pedidos")
 @Entity(name = "Pedido")
 public class Pedido {

@@ -1,7 +1,10 @@
 package br.com.eyegen.api_eyegen.domain.manutencao;
 
+import br.com.eyegen.api_eyegen.domain.manutencao.enums.StatusManutencao;
+import br.com.eyegen.api_eyegen.domain.manutencao.enums.TipoManutencao;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +13,7 @@ import java.time.LocalDate;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(of = "id")
 @Table(name = "manutencao")
 @Entity(name = "Manutencao")
 public class Manutencao {
