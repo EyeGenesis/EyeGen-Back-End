@@ -1,5 +1,6 @@
 package br.com.eyegen.api_eyegen.domain.usuario;
 
+import br.com.eyegen.api_eyegen.domain.assinatura.Assinatura;
 import br.com.eyegen.api_eyegen.domain.dispositivo.Dispositivo;
 import br.com.eyegen.api_eyegen.domain.usuario.enums.TipoDeficienciaVisual;
 import jakarta.persistence.*;
@@ -35,4 +36,8 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario")
     private Set<Dispositivo> dispositivos = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "id_assinatura")
+    private Assinatura assinatura;
 }

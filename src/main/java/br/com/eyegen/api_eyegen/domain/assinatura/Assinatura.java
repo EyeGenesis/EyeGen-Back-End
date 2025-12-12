@@ -2,11 +2,14 @@ package br.com.eyegen.api_eyegen.domain.assinatura;
 
 import br.com.eyegen.api_eyegen.domain.assinatura.enums.Plano;
 import br.com.eyegen.api_eyegen.domain.assinatura.enums.StatusAssinatura;
+import br.com.eyegen.api_eyegen.domain.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @AllArgsConstructor
@@ -26,11 +29,15 @@ public class Assinatura {
     private BigDecimal valorMensal;
 
     @Column(name = "data_inicio")
-    private LocalDate dataInicio;
+    private LocalDateTime dataInicio;
 
     @Column(name = "data_vencimento")
-    private LocalDate dataVencimento;
+    private LocalDateTime dataVencimento;
 
     @Enumerated(value = EnumType.STRING)
-    private StatusAssinatura status;
+    @Column(name = "status_assinatura")
+    private StatusAssinatura statusAssinatura;
+
+    @OneToMany(mappedBy = "assinatura")
+    private List<Usuario> usuarios;
 }
