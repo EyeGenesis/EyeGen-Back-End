@@ -1,18 +1,19 @@
 package br.com.eyegen.api_eyegen.domain.pedido;
 
+import br.com.eyegen.api_eyegen.domain.item_pedido.ItemPedido;
 import br.com.eyegen.api_eyegen.domain.pedido.enums.MetodoPagamento;
 import br.com.eyegen.api_eyegen.domain.pedido.enums.StatusPedido;
 import br.com.eyegen.api_eyegen.domain.usuario.Usuario;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -40,4 +41,15 @@ public class Pedido {
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario cliente;
+
+    @OneToMany(mappedBy = "pedido")
+    private Set<ItemPedido> itens = new HashSet<>();
+
+    public Double calculaTotal(){
+        return itens.stream()
+                .map(ItemPedido::getSubTotal)
+                .mapToDouble(BigDecimal::doubleValue)
+                .sum();
+    }
+
 }
