@@ -2,6 +2,7 @@ package br.com.eyegen.api_eyegen.domain.usuario;
 
 import br.com.eyegen.api_eyegen.domain.assinatura.Assinatura;
 import br.com.eyegen.api_eyegen.domain.dispositivo.Dispositivo;
+import br.com.eyegen.api_eyegen.domain.pedido.Pedido;
 import br.com.eyegen.api_eyegen.domain.usuario.enums.TipoDeficienciaVisual;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,7 +11,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -40,4 +43,7 @@ public class Usuario {
     @ManyToOne
     @JoinColumn(name = "id_assinatura")
     private Assinatura assinatura;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos = new ArrayList<>();
 }

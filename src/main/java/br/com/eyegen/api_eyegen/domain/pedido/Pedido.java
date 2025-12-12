@@ -2,6 +2,7 @@ package br.com.eyegen.api_eyegen.domain.pedido;
 
 import br.com.eyegen.api_eyegen.domain.pedido.enums.MetodoPagamento;
 import br.com.eyegen.api_eyegen.domain.pedido.enums.StatusPedido;
+import br.com.eyegen.api_eyegen.domain.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -29,10 +30,14 @@ public class Pedido {
     @Column(name = "status_pedido")
     private StatusPedido statusPedido;
 
-    @Column(name = "data_vencimento")
-    private LocalDateTime dataVencimento;
+    @Column(name = "data_pedido")
+    private LocalDateTime dataPedido;
 
     @Enumerated(value = EnumType.STRING)
     @Column(name = "metodo_pagamento")
     private MetodoPagamento metodoPagamento;
+
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", nullable = false)
+    private Usuario cliente;
 }
