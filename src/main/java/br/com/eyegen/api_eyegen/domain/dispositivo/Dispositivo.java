@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 public class Dispositivo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_dispositivo")
     private Long id;
 
     @Column(name = "numero_serie")

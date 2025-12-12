@@ -16,6 +16,7 @@ import java.time.LocalDate;
 @Table(name = "assinaturas")
 public class Assinatura {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_assinatura")
     private Long id;
 
     @Enumerated(value = EnumType.STRING)

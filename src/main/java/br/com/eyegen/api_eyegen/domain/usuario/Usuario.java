@@ -17,14 +17,15 @@ import java.time.LocalDate;
 @Entity(name = "Usuario")
 public class Usuario {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario")
     private Long id;
-    private String nome;
+    @Column(name = "nome_usuario")
+    private String nomeUsuario;
     private String email;
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
     private String senha;
     private String telefone;
-
     @Enumerated(value = EnumType.STRING)
     @Column(name = "tipo_def_visual")
     private TipoDeficienciaVisual deficienciaVisual;

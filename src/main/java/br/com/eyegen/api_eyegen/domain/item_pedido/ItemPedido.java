@@ -10,7 +10,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
@@ -26,14 +25,5 @@ public class ItemPedido {
     @Column(name = "preco_unitario")
     private BigDecimal precoUnitario;
 
-    @Enumerated(value = EnumType.STRING)
-    @Column(name = "status_pedido")
-    private StatusPedido statusPedido;
-
-    @Column(name = "data_vencimento")
-    private LocalDateTime dataVencimento;
-
-    @Enumerated(value = EnumType.STRING)
-    @Column(name = "metodo_pagamento")
-    private MetodoPagamento metodoPagamento;
+    private Integer quantidade;
 }

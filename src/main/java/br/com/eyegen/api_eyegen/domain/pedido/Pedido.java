@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 @Entity(name = "Pedido")
 public class Pedido {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_pedido")
     private Long id;
 
     @Column(name = "valor_total")

@@ -19,6 +19,7 @@ import java.time.LocalDate;
 public class Manutencao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_manutencao")
     private Long id;
 
     @Enumerated(value = EnumType.STRING)
