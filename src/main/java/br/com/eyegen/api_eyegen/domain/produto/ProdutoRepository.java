@@ -1,8 +1,8 @@
-package br.com.eyegen.api_eyegen.domain.usuario;
+package br.com.eyegen.api_eyegen.domain.produto;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 }

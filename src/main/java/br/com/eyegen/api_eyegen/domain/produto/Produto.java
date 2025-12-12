@@ -1,7 +1,6 @@
 package br.com.eyegen.api_eyegen.domain.produto;
 
-import br.com.eyegen.api_eyegen.domain.pedido.enums.MetodoPagamento;
-import br.com.eyegen.api_eyegen.domain.pedido.enums.StatusPedido;
+import br.com.eyegen.api_eyegen.domain.produto.enums.TipoProduto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -9,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
