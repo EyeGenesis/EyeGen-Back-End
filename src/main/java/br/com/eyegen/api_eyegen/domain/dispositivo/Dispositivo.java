@@ -1,11 +1,14 @@
 package br.com.eyegen.api_eyegen.domain.dispositivo;
 
 import br.com.eyegen.api_eyegen.domain.dispositivo.enums.StatusDispositivo;
+import br.com.eyegen.api_eyegen.domain.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
@@ -28,4 +31,11 @@ public class Dispositivo {
     @Enumerated(value = EnumType.STRING)
     @Column(name = "status_dispositivo")
     private StatusDispositivo statusDispositivo;
+
+    @Column(name = "data_ativacao")
+    private LocalDateTime dataAtivacao;
+
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", nullable = false)
+    private Usuario usuario;
 }

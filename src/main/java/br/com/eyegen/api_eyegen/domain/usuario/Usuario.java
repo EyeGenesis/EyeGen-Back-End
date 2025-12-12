@@ -1,5 +1,6 @@
 package br.com.eyegen.api_eyegen.domain.usuario;
 
+import br.com.eyegen.api_eyegen.domain.dispositivo.Dispositivo;
 import br.com.eyegen.api_eyegen.domain.usuario.enums.TipoDeficienciaVisual;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @AllArgsConstructor
@@ -29,4 +32,7 @@ public class Usuario {
     @Enumerated(value = EnumType.STRING)
     @Column(name = "tipo_def_visual")
     private TipoDeficienciaVisual deficienciaVisual;
+
+    @OneToMany(mappedBy = "usuario")
+    private Set<Dispositivo> dispositivos = new HashSet<>();
 }
