@@ -21,8 +21,8 @@ public class Produto {
     @Column(name = "id_produto")
     private Long id;
 
-    @Column(name = "valor_atual")
-    private BigDecimal valorAtual;
+    @Column(name = "preco_atual")
+    private BigDecimal precoAtual;
 
     @Column(name = "nome_produto")
     private String nomeProduto;

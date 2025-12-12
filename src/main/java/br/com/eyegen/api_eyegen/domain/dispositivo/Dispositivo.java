@@ -2,6 +2,7 @@ package br.com.eyegen.api_eyegen.domain.dispositivo;
 
 import br.com.eyegen.api_eyegen.domain.dispositivo.enums.StatusDispositivo;
 import br.com.eyegen.api_eyegen.domain.manutencao.Manutencao;
+import br.com.eyegen.api_eyegen.domain.produto.Produto;
 import br.com.eyegen.api_eyegen.domain.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -43,4 +44,9 @@ public class Dispositivo {
 
     @OneToMany(mappedBy = "dispositivo")
     private List<Manutencao> manutencoes;
+
+    @OneToOne
+    @JoinColumn(name = "id_produto")
+    private Produto produto;
+
 }

@@ -2,6 +2,7 @@ package br.com.eyegen.api_eyegen.domain.assinatura;
 
 import br.com.eyegen.api_eyegen.domain.assinatura.enums.Plano;
 import br.com.eyegen.api_eyegen.domain.assinatura.enums.StatusAssinatura;
+import br.com.eyegen.api_eyegen.domain.produto.Produto;
 import br.com.eyegen.api_eyegen.domain.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.*;
@@ -40,4 +41,8 @@ public class Assinatura {
 
     @OneToMany(mappedBy = "assinatura")
     private List<Usuario> usuarios;
+
+    @OneToOne
+    @JoinColumn(name = "id_produto")
+    private Produto produto;
 }
