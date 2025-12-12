@@ -1,5 +1,6 @@
 package br.com.eyegen.api_eyegen.domain.manutencao;
 
+import br.com.eyegen.api_eyegen.domain.dispositivo.Dispositivo;
 import br.com.eyegen.api_eyegen.domain.manutencao.enums.StatusManutencao;
 import br.com.eyegen.api_eyegen.domain.manutencao.enums.TipoManutencao;
 import jakarta.persistence.*;
@@ -8,7 +9,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
@@ -33,5 +34,9 @@ public class Manutencao {
     private StatusManutencao statusManutencao;
 
     @Column(name = "data_solicitacao")
-    private LocalDate dataSolicitacao;
+    private LocalDateTime dataSolicitacao;
+
+    @ManyToOne
+    @JoinColumn(name = "id_dispositivo")
+    private Dispositivo dispositivo;
 }

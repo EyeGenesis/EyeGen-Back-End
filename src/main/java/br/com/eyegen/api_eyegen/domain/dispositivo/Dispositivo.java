@@ -1,6 +1,7 @@
 package br.com.eyegen.api_eyegen.domain.dispositivo;
 
 import br.com.eyegen.api_eyegen.domain.dispositivo.enums.StatusDispositivo;
+import br.com.eyegen.api_eyegen.domain.manutencao.Manutencao;
 import br.com.eyegen.api_eyegen.domain.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @AllArgsConstructor
@@ -38,4 +40,7 @@ public class Dispositivo {
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
+
+    @OneToMany(mappedBy = "dispositivo")
+    private List<Manutencao> manutencoes;
 }
