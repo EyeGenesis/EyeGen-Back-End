@@ -1,9 +1,13 @@
 package br.com.eyegen.api_eyegen.controller;
 
 import br.com.eyegen.api_eyegen.domain.usuario.DadosAutenticacao;
+import br.com.eyegen.api_eyegen.domain.usuario.DadosCadastroUsuario;
 import br.com.eyegen.api_eyegen.domain.usuario.Usuario;
+import br.com.eyegen.api_eyegen.domain.usuario.UsuarioRepository;
 import br.com.eyegen.api_eyegen.infra.security.DadosTokenJWT;
 import br.com.eyegen.api_eyegen.infra.security.TokenService;
+import br.com.eyegen.api_eyegen.domain.usuario.DadosRespostaUsuario;
+import br.com.eyegen.api_eyegen.services.CadastroUsuarioService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -11,24 +15,46 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/usuarios")
 public class AutenticacaoController {
 
     @Autowired
     private AuthenticationManager manager;
 
+    @Autowired
     private TokenService tokenService;
 
+    @Autowired
+    private CadastroUsuarioService service;
+
     @Transactional
-    @PostMapping
-    public ResponseEntity login(@RequestBody @Valid DadosAutenticacao dados){
+    @PostMapping("/login")
+    public ResponseEntity login(@RequestBody @Valid DadosAutenticacao dados) {
         var authenticationToken = new UsernamePasswordAuthenticationToken(dados.email(), dados.senha());
         var authentication = manager.authenticate(authenticationToken);
         var tokenJWT = tokenService.gerarToken((Usuario) authentication.getPrincipal());
         return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
+    }
+
+    @PostMapping("/cadastro")
+    public ResponseEntity cadastro(@RequestBody @Valid DadosCadastroUsuario dados, UriComponentsBuilder builder) {
+
+        Usuario usuario = this.service.cadastrar(dados);
+
+        var uri = builder
+                .path("/usuarios/{id}")
+                .buildAndExpand(usuario.getId())
+                .toUri();
+
+        return ResponseEntity.created(uri).body(new DadosRespostaUsuario(usuario));
+
     }
 }

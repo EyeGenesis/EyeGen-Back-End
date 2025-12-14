@@ -5,6 +5,7 @@ import br.com.eyegen.api_eyegen.domain.dispositivo.Dispositivo;
 import br.com.eyegen.api_eyegen.domain.pedido.Pedido;
 import br.com.eyegen.api_eyegen.domain.usuario.enums.TipoDeficienciaVisual;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -13,6 +14,7 @@ import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -37,9 +39,10 @@ public class Usuario implements UserDetails {
 
     private String senha;
     private String telefone;
-    @Enumerated(value = EnumType.STRING)
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "tipo_def_visual")
-    private TipoDeficienciaVisual deficienciaVisual;
+    private TipoDeficienciaVisual tipoDeficienciaVisual;
 
     @OneToMany(mappedBy = "usuario")
     private Set<Dispositivo> dispositivos = new HashSet<>();
@@ -50,6 +53,15 @@ public class Usuario implements UserDetails {
 
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos = new ArrayList<>();
+
+    public Usuario(DadosCadastroUsuario dados, String senha) {
+        this.nomeUsuario = dados.nome();
+        this.email = dados.email();
+        this.senha = senha;
+        this.dataNascimento = dados.dataNascimento();
+        this.tipoDeficienciaVisual = dados.deficienciaVisual();
+        this.telefone = dados.telefone();
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -1,5 +1,6 @@
-package br.com.eyegen.api_eyegen.domain.usuario;
+package br.com.eyegen.api_eyegen.services;
 
+import br.com.eyegen.api_eyegen.domain.usuario.UsuarioRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

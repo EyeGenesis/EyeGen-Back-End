@@ -1,0 +1,9 @@
+ALTER TABLE usuarios MODIFY COLUMN tipo_def_visual VARCHAR(20) NOT NULL;
+ALTER TABLE dispositivos MODIFY COLUMN status_dispositivo VARCHAR(20) DEFAULT 'ativo';
+ALTER TABLE assinaturas MODIFY COLUMN plano VARCHAR(15) NOT NULL;
+ALTER TABLE assinaturas MODIFY COLUMN status_assinatura VARCHAR(15) DEFAULT 'ativa';
+ALTER TABLE manutencao MODIFY COLUMN status_manutencao VARCHAR(15) DEFAULT 'aberta';
+ALTER TABLE manutencao MODIFY COLUMN tipo_manutencao VARCHAR(20) NOT NULL;
+ALTER TABLE pedidos MODIFY COLUMN status_pedido VARCHAR(15) DEFAULT 'pendente';
+ALTER TABLE pedidos MODIFY COLUMN metodo_pagamento VARCHAR(20) NOT NULL;
+ALTER TABLE produtos MODIFY COLUMN tipo_produto VARCHAR(15) NOT NULL;
