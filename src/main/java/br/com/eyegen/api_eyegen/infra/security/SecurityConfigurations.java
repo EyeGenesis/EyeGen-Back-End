@@ -23,9 +23,10 @@ public class SecurityConfigurations {
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize ->
                         authorize
-                        .requestMatchers(HttpMethod.POST, "/usuarios/login").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/usuarios/cadastro").permitAll()
-                        .anyRequest().authenticated())
+                                .requestMatchers(HttpMethod.POST, "/usuarios/login").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/usuarios/cadastro").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/pedidos").permitAll()
+                                .anyRequest().authenticated())
                 .build();
     }
 

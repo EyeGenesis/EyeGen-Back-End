@@ -2,17 +2,16 @@ package br.com.eyegen.api_eyegen.domain.produto;
 
 import br.com.eyegen.api_eyegen.domain.item_pedido.ItemPedido;
 import br.com.eyegen.api_eyegen.domain.produto.enums.TipoProduto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")

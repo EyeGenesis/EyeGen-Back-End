@@ -3,6 +3,8 @@ package br.com.eyegen.api_eyegen.domain.item_pedido;
 import br.com.eyegen.api_eyegen.domain.pedido.Pedido;
 import br.com.eyegen.api_eyegen.domain.produto.Produto;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 
@@ -32,6 +34,12 @@ public class ItemPedido {
     private BigDecimal precoUnitario;
 
     private Integer quantidade;
+
+    public ItemPedido(Produto produto, Pedido pedido,  Integer quantidade) {
+        this.produto = produto;
+        this.pedido = pedido;
+        this.quantidade = quantidade;
+    }
 
     public BigDecimal getSubTotal(){
         return precoUnitario.multiply(BigDecimal.valueOf(quantidade));

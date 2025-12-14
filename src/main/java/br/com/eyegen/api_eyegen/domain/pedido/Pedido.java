@@ -5,11 +5,14 @@ import br.com.eyegen.api_eyegen.domain.pedido.enums.MetodoPagamento;
 import br.com.eyegen.api_eyegen.domain.pedido.enums.StatusPedido;
 import br.com.eyegen.api_eyegen.domain.usuario.Usuario;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -43,13 +46,20 @@ public class Pedido {
     private Usuario cliente;
 
     @OneToMany(mappedBy = "pedido")
-    private Set<ItemPedido> itens = new HashSet<>();
+    private List<ItemPedido> itens = new ArrayList<>();
 
-    public Double calculaTotal(){
-        return itens.stream()
-                .map(ItemPedido::getSubTotal)
-                .mapToDouble(BigDecimal::doubleValue)
-                .sum();
+    public Pedido(Usuario cliente, LocalDateTime dataPedido, StatusPedido statusPedido, MetodoPagamento metodoPagamento) {
+        this.cliente = cliente;
+        this.dataPedido = dataPedido;
+        this.statusPedido = statusPedido;
+        this.metodoPagamento = metodoPagamento;
+    }
+
+    public void calculaTotal(){
+        this.valorTotal = itens.stream()
+                .map(ItemPedido::getSubTotal).reduce((BigDecimal::add))
+                .orElseThrow();
+
     }
 
 }
