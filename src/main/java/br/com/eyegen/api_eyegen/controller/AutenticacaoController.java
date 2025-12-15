@@ -3,7 +3,6 @@ package br.com.eyegen.api_eyegen.controller;
 import br.com.eyegen.api_eyegen.domain.usuario.DadosAutenticacao;
 import br.com.eyegen.api_eyegen.domain.usuario.DadosCadastroUsuario;
 import br.com.eyegen.api_eyegen.domain.usuario.Usuario;
-import br.com.eyegen.api_eyegen.domain.usuario.UsuarioRepository;
 import br.com.eyegen.api_eyegen.infra.security.DadosTokenJWT;
 import br.com.eyegen.api_eyegen.infra.security.TokenService;
 import br.com.eyegen.api_eyegen.domain.usuario.DadosRespostaUsuario;
@@ -15,11 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.List;
+import java.util.Objects;
 
 @RequiredArgsConstructor
 @RestController
@@ -40,7 +38,7 @@ public class AutenticacaoController {
     public ResponseEntity login(@RequestBody @Valid DadosAutenticacao dados) {
         var authenticationToken = new UsernamePasswordAuthenticationToken(dados.email(), dados.senha());
         var authentication = manager.authenticate(authenticationToken);
-        var tokenJWT = tokenService.gerarToken((Usuario) authentication.getPrincipal());
+        var tokenJWT = tokenService.gerarToken((Usuario) Objects.requireNonNull(authentication.getPrincipal()));
         return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
     }
 

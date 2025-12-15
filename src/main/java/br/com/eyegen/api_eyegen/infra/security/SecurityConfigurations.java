@@ -1,5 +1,6 @@
 package br.com.eyegen.api_eyegen.infra.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -12,10 +13,13 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfigurations {
+    @Autowired
+    private SecurityFilter securityFiltro;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) {
@@ -25,8 +29,8 @@ public class SecurityConfigurations {
                         authorize
                                 .requestMatchers(HttpMethod.POST, "/usuarios/login").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/usuarios/cadastro").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/pedidos").permitAll()
                                 .anyRequest().authenticated())
+                .addFilterBefore(securityFiltro, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
