@@ -1,0 +1,1 @@
+ALTER TABLE usuarios MODIFY COLUMN tipo_def_visual VARCHAR(50) NOT NULL;
