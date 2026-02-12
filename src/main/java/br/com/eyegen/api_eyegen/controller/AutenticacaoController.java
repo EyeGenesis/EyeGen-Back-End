@@ -19,19 +19,20 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.Objects;
 
-@RequiredArgsConstructor
 @RestController
 @RequestMapping("/usuarios")
 public class AutenticacaoController {
-
-    @Autowired
     private AuthenticationManager manager;
 
-    @Autowired
     private TokenService tokenService;
 
-    @Autowired
     private CadastroUsuarioService service;
+
+    public AutenticacaoController(AuthenticationManager manager, TokenService tokenService, CadastroUsuarioService service) {
+        this.manager = manager;
+        this.tokenService = tokenService;
+        this.service = service;
+    }
 
     @Transactional
     @PostMapping("/login")

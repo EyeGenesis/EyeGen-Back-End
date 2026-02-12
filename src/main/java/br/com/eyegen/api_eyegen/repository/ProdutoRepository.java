@@ -1,5 +1,6 @@
-package br.com.eyegen.api_eyegen.domain.produto;
+package br.com.eyegen.api_eyegen.repository;
 
+import br.com.eyegen.api_eyegen.domain.produto.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

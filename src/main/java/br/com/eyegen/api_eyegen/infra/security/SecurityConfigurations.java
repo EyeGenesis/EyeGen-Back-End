@@ -24,8 +24,11 @@ import java.util.Arrays;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfigurations {
-    @Autowired
     private SecurityFilter securityFiltro;
+
+    public SecurityConfigurations(SecurityFilter securityFiltro) {
+        this.securityFiltro = securityFiltro;
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) {
@@ -45,16 +48,12 @@ public class SecurityConfigurations {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
-        // Permite apenas o seu Front-end (Mude a porta se necessário)
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
+        configuration.setAllowedOrigins(Arrays.asList("https://www.eyegen.com.br/"));
 
-        // Permite os métodos HTTP necessários
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 
-        // Permite cabeçalhos (Authorization, Content-Type, etc)
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
 
-        // Se usar Cookies ou Auth Basic, precisa disso:
         configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

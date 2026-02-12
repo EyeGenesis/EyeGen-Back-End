@@ -1,10 +1,8 @@
-package br.com.eyegen.api_eyegen.domain.usuario;
+package br.com.eyegen.api_eyegen.repository;
 
+import br.com.eyegen.api_eyegen.domain.usuario.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
-
-import java.util.Optional;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {

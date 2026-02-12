@@ -1,6 +1,6 @@
 package br.com.eyegen.api_eyegen.infra.security;
 
-import br.com.eyegen.api_eyegen.domain.usuario.UsuarioRepository;
+import br.com.eyegen.api_eyegen.repository.UsuarioRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,12 +17,14 @@ import java.io.IOException;
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
 
-
-    @Autowired
     private TokenService tokenService;
 
-    @Autowired
     private UsuarioRepository usuarioRepository;
+
+    public SecurityFilter(TokenService tokenService, UsuarioRepository usuarioRepository) {
+        this.tokenService = tokenService;
+        this.usuarioRepository = usuarioRepository;
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
